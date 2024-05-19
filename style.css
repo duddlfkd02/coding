@@ -1,0 +1,175 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.gall_contentWrap .gall_ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 100px 20px;
+}
+
+.gall_contentWrap .gall_ul>li {
+    position: relative;
+    width: calc(96% / 4);
+    background-color: #fff;
+    border: 1px solid gray;
+
+    border-radius: 20px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.gall_contentWrap .gall_contentWrap>li>a {
+    display: inline-block;
+    width: 100%;
+}
+
+.gall_contentWrap .gall_content .seach_icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    min-height: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0);
+    display: none;
+}
+
+.gall_contentWrap .gall_content .seach_icon>img {
+    width: 20%;
+    min-width: 70px;
+}
+
+.gallery_wrap .gall_content {
+    position: relative;
+}
+
+.gall_contentWrap .gall_content img.view_img {
+    height: 0%;
+}
+
+
+.gall_contentWrap .gall_ul>li:hover {
+    border: 1px solid green;
+}
+
+.gall_contentWrap a:hover .seach_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.gall_content:hover .seach_icon {
+    display: block;
+}
+
+/* .gall_content:hover.gall_text>h3 {
+    color: green;
+} */
+
+.gall_text {
+    padding: 20px;
+}
+
+.gall_text>h3 {
+    padding-bottom: 15px;
+}
+
+
+
+
+/* *************table 공부*********** */
+
+table {
+    margin: 20px;
+}
+
+.table_wrap {
+    /* 테이블 전체에 테두리 줌 */
+    border: 1px solid black;
+    font-size: 30px;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.table_wrap .table_h {
+    background-color: lightblue
+}
+
+.table_wrap .table_b {
+    background-color: lightskyblue
+}
+
+.table_wrap .table_h>tr>th {
+    width: 200px;
+    height: 50px;
+    border: 1px solid black;
+}
+
+
+.table_wrap .table_b>tr>td {
+    height: 50px;
+    border: 1px solid black;
+
+}
+
+.table_wrap2 {
+    margin: 20px;
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.table_h2>tr>th,
+.table_b2>tr>td {
+    width: 150px;
+    height: 40px;
+    border: 1px solid black;
+}
+
+.table_wrap3 {
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.table_h3>tr>th,
+.table_b3>tr>td,
+.table_f3>tr>td {
+    width: 150px;
+    height: 40px;
+    border: 1px solid black;
+}
+
+.table_wrap3 .table_b3>tr>td:nth-child(1) {
+    font-weight: bold;
+}
+
+.table_wrap3 .table_h3>tr>th {
+    background-color: #ffabab;
+}
+
+.table_wrap3 .table_h3 .table_h3_sub {
+    background-color: #ffd272;
+}
+
+.table_wrap3 .table_f3 {
+    background-color: #bee9b8;
+}
