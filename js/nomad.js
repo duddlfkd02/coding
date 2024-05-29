@@ -1,3 +1,5 @@
+const colorOptions = Array.from(document.getElementsByClassName('color-option'));
+//색상값을 배열 변수로 담기
 const color = document.getElementById('color');
 const lineWidth = document.getElementById('line-width');
 const canvas = document.querySelector('canvas');
@@ -33,6 +35,12 @@ function onColorChange(event) {
     ctx.fillStyle = event.target.value;
 }
 
+function onColorClick(event) {
+    const colorValue = event.target.dataset.color;
+    ctx.strokeStyle = colorValue;
+    ctx.fillStyle = colorValue;
+    color.value = colorValue; // 선택한 색상을 input에 보여지게 설정
+}
 
 canvas.addEventListener('mousemove', onMove);
 canvas.addEventListener('mousedown', startPainting);
@@ -44,3 +52,5 @@ color.addEventListener('change', onColorChange);
 
 
 
+
+colorOptions.forEach((color) => color.addEventListener('click', onColorClick));
