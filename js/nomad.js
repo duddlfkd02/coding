@@ -1,12 +1,18 @@
 const modebBtn = document.getElementById('mode-btn');
+const destroyBtn = document.getElementById('destroy-btn');
+const eraseBtn = document.getElementById('erase-btn');
 const colorOptions = Array.from(document.getElementsByClassName('color-option'));
 //색상값을 배열 변수로 담기
 const color = document.getElementById('color');
 const lineWidth = document.getElementById('line-width');
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
-canvas.width = 600;
-canvas.height = 600;
+
+const CANVAS_WIDTH = 600;
+const CANVAS_HEIGHT = 600;
+
+canvas.width = CANVAS_WIDTH;
+canvas.height = CANVAS_HEIGHT;
 ctx.lineWidth = lineWidth.value;
 let isPainting = false;
 let isFilling = false;
@@ -56,8 +62,23 @@ function onModeClick() {
 
 function onCanvasClick() {
     if (isFilling) {
-        ctx.fillRect(0, 0, 600, 600);
+        ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     }
+}
+
+function onDestroyClick() {
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+}
+
+function onEraseClick() {
+
+    ctx.strokeStyle = 'white';
+    isFilling = false;
+    modebBtn.innerText = "Fill";
+
+
+
 }
 
 canvas.addEventListener('mousemove', onMove);
@@ -72,3 +93,5 @@ color.addEventListener('change', onColorChange);
 colorOptions.forEach((color) => color.addEventListener('click', onColorClick));
 
 modebBtn.addEventListener('click', onModeClick);
+destroyBtn.addEventListener('click', onDestroyClick);
+eraseBtn.addEventListener('click', onEraseClick);
