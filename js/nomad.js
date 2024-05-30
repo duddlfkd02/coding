@@ -10,6 +10,7 @@ const color = document.getElementById('color');
 const lineWidth = document.getElementById('line-width');
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
+let rangeInput = document.querySelector('.rangeInput');
 
 const CANVAS_WIDTH = 600;
 const CANVAS_HEIGHT = 600;
@@ -57,10 +58,10 @@ function onColorClick(event) {
 function onModeClick() {
     if (isFilling) {
         isFilling = false;
-        modebBtn.innerText = "Fill";
+        modebBtn.innerText = "🎨 Fill";
     } else {
         isFilling = true;
-        modebBtn.innerHTML = "Draw";
+        modebBtn.innerHTML = "🎨 Draw";
     }
 }
 
@@ -76,10 +77,9 @@ function onDestroyClick() {
 }
 
 function onEraseClick() {
-
     ctx.strokeStyle = 'white';
     isFilling = false;
-    modebBtn.innerText = "Fill";
+    modebBtn.innerText = "🎨 Fill";
 }
 
 function onFileChange(event) {
@@ -112,6 +112,11 @@ function onSaveClick() {
     a.click();
 }
 
+rangeInput.addEventListener('input', function (event) {
+    let gradient_value = 95 / event.target.attributes.max.value;
+    event.target.style.background = 'linear-gradient(to right, #83daff 0%, #83daff' + gradient_value * event.target.value + '%, rgb(255, 255, 255)  ' + gradient_value * event.target.value + '%, rgb(255, 255, 255) 100%)';
+})
+
 canvas.addEventListener('dblclick', onDoubleClick);
 canvas.addEventListener('mousemove', onMove);
 canvas.addEventListener('mousedown', startPainting);
@@ -130,3 +135,5 @@ destroyBtn.addEventListener('click', onDestroyClick);
 eraseBtn.addEventListener('click', onEraseClick);
 fileInput.addEventListener('change', onFileChange);
 saveBtn.addEventListener('click', onSaveClick);
+
+

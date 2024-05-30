@@ -9,28 +9,45 @@
 </head>
 
 <body>
-    <canvas></canvas>
-    <input id="line-width" type="range" min="1" max="10" value="5" step="0.5">
-    <input id="color" type="color">
-    <div class="color-option-container">
-        <div class="color-option" style="background-color: #1abc9c;" data-color="#1abc9c"></div>
-        <div class="color-option" style="background-color: #3498db;" data-color="#3498db"></div>
-        <div class="color-option" style="background-color: #34495e;" data-color="#34495e"></div>
-        <div class="color-option" style="background-color: #95a5a6;" data-color="#95a5a6"></div>
-        <div class="color-option" style="background-color: #f1c40f;" data-color="#f1c40f"></div>
-        <div class="color-option" style="background-color: #fdcb6e;" data-color="#fdcb6e"></div>
-        <div class="color-option" style="background-color: #e67e22;" data-color="#e67e22"></div>
-        <div class="color-option" style="background-color: #e74c3c;" data-color="#e74c3c"></div>
-        <div class="color-option" style="background-color: #9b59b6;" data-color="#9b59b6"></div>
-        <div class="color-option" style="background-color: #fd79a8;" data-color="#fd79a8"></div>
+    <div>
+        <canvas></canvas>
+        <div class="color-options">
+            <input id="color" type="color">
+            <div class="color-option" style="background-color: #ef4444;" data-color="#ef4444"></div>
+            <div class="color-option" style="background-color: #f97316;" data-color="#f97316"></div>
+            <div class="color-option" style="background-color: #fbbf24;" data-color="#fbbf24"></div>
+            <div class="color-option" style="background-color: #a3e635;" data-color="#a3e635"></div>
+            <div class="color-option" style="background-color: #4ade80;" data-color="#4ade80"></div>
+            <div class="color-option" style="background-color: #22d3ee;" data-color="#22d3ee"></div>
+            <div class="color-option" style="background-color: #38bdf8;" data-color="#38bdf8"></div>
+            <div class="color-option" style="background-color: #60a5fa;" data-color="#60a5fa"></div>
+            <div class="color-option" style="background-color: #6366f1;" data-color="#6366f1"></div>
+            <div class="color-option" style="background-color: #c084fc;" data-color="#c084fc"></div>
+            <div class="color-option" style="background-color: #fd79a8;" data-color="#fd79a8"></div>
+            <div class="color-option" style="background-color: #f472b6;" data-color="#f472b6"></div>
+            <div class="color-option" style="background-color: #ffffff;" data-color="#ffffff"></div>
+        </div>
     </div>
-    <button id="mode-btn">Fill</button>
-    <button id="destroy-btn">destroy</button>
-    <button id="erase-btn">erase</button>
-    <input type="file" accept="image/*" id="file">
-    <input type="text" placeholder="Write anf then double click" id="text">
-    <button id="save">Save image</button>
-    <script src="js/nomad.js"></script>
+    <div>
+        <div class="btns">
+            <input id="line-width" type="range" min="1" max="10" value="5" step="0.5" class="rangeInput">
+            <button id="mode-btn">🎨 Fill</button>
+            <button id="destroy-btn">✨ Destroy</button>
+            <button id="erase-btn">❎ Erase</button>
+            <label for="file">
+                📸 Add Photo
+                <input type="file" accept="image/*" id="file">
+            </label>
+
+            <input type="text" placeholder="Add text here...^0^" id="text">
+            <button id="save">🖼️ Save image</button>
+            <script src="js/nomad.js"></script>
+        </div>
+
+    </div>
+
+
+
 </body>
 
 </html>
