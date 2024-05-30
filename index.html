@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div>
+    <div class="canvas-top">
         <canvas></canvas>
         <div class="color-options">
             <input id="color" type="color">
@@ -28,9 +28,13 @@
             <div class="color-option" style="background-color: #ffffff;" data-color="#ffffff"></div>
         </div>
     </div>
-    <div>
+    <div class="canvas-bt">
         <div class="btns">
             <input id="line-width" type="range" min="1" max="10" value="5" step="0.5" class="rangeInput">
+            <div id="fontChoose">
+                <p>Font Change</p>
+                <input id="font-choose" type="range" min="1" max="2" value="2" step="1">
+            </div>
             <button id="mode-btn">🎨 Fill</button>
             <button id="destroy-btn">✨ Destroy</button>
             <button id="erase-btn">❎ Erase</button>
@@ -43,7 +47,6 @@
             <button id="save">🖼️ Save image</button>
             <script src="js/nomad.js"></script>
         </div>
-
     </div>
 
 

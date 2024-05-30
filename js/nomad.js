@@ -5,18 +5,22 @@ const modebBtn = document.getElementById('mode-btn');
 const destroyBtn = document.getElementById('destroy-btn');
 const eraseBtn = document.getElementById('erase-btn');
 const colorOptions = Array.from(document.getElementsByClassName('color-option'));
-//색상값을 배열 변수로 담기
+const fontChoose = document.getElementById('font-choose'); /* 폰트 range 변수 담기*/
 const color = document.getElementById('color');
 const lineWidth = document.getElementById('line-width');
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 let rangeInput = document.querySelector('.rangeInput');
+let font = new FontFace('Mont', 'url(../font/Mont-HeavyDEMO.woff');
 
 const CANVAS_WIDTH = 600;
 const CANVAS_HEIGHT = 600;
 
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
+
+ctx.fontChoose = fontChoose.value;/* 폰트 range 값 저장*/
+
 ctx.lineWidth = lineWidth.value; /* input의 브러쉬 굵기*/
 ctx.lineCap = 'round';
 let isPainting = false;
@@ -113,8 +117,19 @@ function onSaveClick() {
 }
 
 rangeInput.addEventListener('input', function (event) {
-    let gradient_value = 95 / event.target.attributes.max.value;
+    let color_value = 100 / event.target.attributes.max.value;
     event.target.style.background = 'linear-gradient(to right, #83daff 0%, #83daff' + gradient_value * event.target.value + '%, rgb(255, 255, 255)  ' + gradient_value * event.target.value + '%, rgb(255, 255, 255) 100%)';
+})
+
+//폰트 수정 함수
+font.load().then(function (event) {
+    if (fontChoose == 1) {
+        ctx.font = '30px Mont-HeavyDEMO.woff'
+        ctx.fillText(text, event.offsetX, event.offsetY);
+    } else {
+        ctx.font = '68px sans-serif';
+        ctx.fillText(text, event.offsetX, event.offsetY);
+    }
 })
 
 canvas.addEventListener('dblclick', onDoubleClick);
@@ -126,7 +141,6 @@ canvas.addEventListener('click', onCanvasClick);
 
 lineWidth.addEventListener('change', onLineWidthChange);
 color.addEventListener('change', onColorChange);
-
 
 colorOptions.forEach((color) => color.addEventListener('click', onColorClick));
 
