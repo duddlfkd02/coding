@@ -1,3 +1,4 @@
+const saveBtn = document.getElementById('save');
 const textInput = document.getElementById('text');
 const fileInput = document.getElementById('file');
 const modebBtn = document.getElementById('mode-btn');
@@ -95,12 +96,20 @@ function onFileChange(event) {
 function onDoubleClick(event) {
     ctx.save(); /* 현재 상태를 모두 저장 */
     const text = textInput.value;
-    if (text === "") {
+    if (text !== "") {
         ctx.lineWidth = 1;
-        ctx.font = '68px serif';
+        ctx.font = '68px sans-serif';
         ctx.fillText(text, event.offsetX, event.offsetY);
         ctx.restore();
     }
+}
+
+function onSaveClick() {
+    const url = canvas.toDataURL();
+    const a = document.createElement("a");
+    a.href = url
+    a.download = 'myDraw.png';
+    a.click();
 }
 
 canvas.addEventListener('dblclick', onDoubleClick);
@@ -120,3 +129,4 @@ modebBtn.addEventListener('click', onModeClick);
 destroyBtn.addEventListener('click', onDestroyClick);
 eraseBtn.addEventListener('click', onEraseClick);
 fileInput.addEventListener('change', onFileChange);
+saveBtn.addEventListener('click', onSaveClick);
