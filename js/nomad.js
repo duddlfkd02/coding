@@ -1,3 +1,5 @@
+const textInput = document.getElementById('text');
+const fileInput = document.getElementById('file');
 const modebBtn = document.getElementById('mode-btn');
 const destroyBtn = document.getElementById('destroy-btn');
 const eraseBtn = document.getElementById('erase-btn');
@@ -13,7 +15,8 @@ const CANVAS_HEIGHT = 600;
 
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
-ctx.lineWidth = lineWidth.value;
+ctx.lineWidth = lineWidth.value; /* input의 브러쉬 굵기*/
+ctx.lineCap = 'round';
 let isPainting = false;
 let isFilling = false;
 
@@ -76,11 +79,31 @@ function onEraseClick() {
     ctx.strokeStyle = 'white';
     isFilling = false;
     modebBtn.innerText = "Fill";
-
-
-
 }
 
+function onFileChange(event) {
+    const file = event.target.files[0];
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.src = url;
+    image.onload = function () {
+        ctx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        fileInput.value = null;
+    }
+}
+
+function onDoubleClick(event) {
+    ctx.save(); /* 현재 상태를 모두 저장 */
+    const text = textInput.value;
+    if (text === "") {
+        ctx.lineWidth = 1;
+        ctx.font = '68px serif';
+        ctx.fillText(text, event.offsetX, event.offsetY);
+        ctx.restore();
+    }
+}
+
+canvas.addEventListener('dblclick', onDoubleClick);
 canvas.addEventListener('mousemove', onMove);
 canvas.addEventListener('mousedown', startPainting);
 canvas.addEventListener('mouseup', cancelPainting);
@@ -90,8 +113,10 @@ canvas.addEventListener('click', onCanvasClick);
 lineWidth.addEventListener('change', onLineWidthChange);
 color.addEventListener('change', onColorChange);
 
+
 colorOptions.forEach((color) => color.addEventListener('click', onColorClick));
 
 modebBtn.addEventListener('click', onModeClick);
 destroyBtn.addEventListener('click', onDestroyClick);
 eraseBtn.addEventListener('click', onEraseClick);
+fileInput.addEventListener('change', onFileChange);
